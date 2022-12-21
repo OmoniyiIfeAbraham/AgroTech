@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update : <%= product.name %></title>
+</head>
+<body>
+    <h1>Update Product</h1>
+    <p><%= msg %></p>
+    <form action="/updateProduct/<%= product._id %>" method="post" enctype="multipart/form-data">
+        <label for="name">Product Name: </label>
+        <input type="text" name="name" id="name" value="<%= product.name %>" required>
+        <br>
+        <label for="image">Product Image: </label>
+        <input type="file" name="image" id="image">
+        <br>
+        <label for="price">Product Price: </label>
+        <input type="number" name="price" id="price" value="<%= product.price %>" required>
+        <br>
+        <label for="content">Product Content: </label>
+        <textarea name="content" id="content" cols="45" rows="15" required><%= product.content %></textarea>
+        <br>
+        <label for="category">Product Category</label>
+        <select name="category" id="category" required>
+            <option value="<%= product.category %>" selected><%= product.category %></option>
+            <% if (product.category === 'agricultural product') { %>
+                <option value="livestock product">Livestock Product</option>
+            <% } else { %>
+                <option value="agricultural product">Agricultural Product</option>
+            <% } %>
+        </select>
+        <br>
+        <input type="submit" value="Update Item">
+    </form>
+</body>
+</html>

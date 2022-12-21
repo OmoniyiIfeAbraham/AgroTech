@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTech | Admin</title>
+    <style>
+                .overlay {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.7);
+          transition: opacity 500ms;
+          visibility: hidden;
+          opacity: 0;
+        }
+        .overlay:target {
+          visibility: visible;
+          opacity: 1;
+        }
+  
+        .popup {
+          margin: 70px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 5px;
+          width: 30%;
+          position: relative;
+          transition: all 5s ease-in-out;
+        }
+
+        @media screen and (max-width: 600px) {
+          .popup {
+            width: 95%
+          }
+        }
+  
+        .popup h2 {
+          margin-top: 0;
+          color: #333;
+          font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          transition: all 200ms;
+          font-size: 30px;
+          font-weight: bold;
+          text-decoration: none;
+          color: #333;
+        }
+        .popup .close:hover {
+          color: #06d85f;
+        }
+        .popup .content {
+          max-height: 80%;
+          overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Admin Dashboard</h1></center>
+    <a href="#">Products</a>
+    <a href="#">Transactions</a>
+    <center><h2>Products</h2></center>
+
+    <a href="#AddProduct">Add Product</a>
+    <p><%= msg %></p>
+
+    <div id="AddProduct" class="overlay">
+        <div class="popup">
+          <a class="close" href="">&times;</a>
+          <div class="content">
+            <h1>Add Product</h1>
+            <p><%= msg %></p>
+            <form action="/addProduct" method="post" enctype="multipart/form-data">
+                <label for="name">Product Name: </label>
+                <input type="text" name="name" id="name" required>
+                <br>
+                <label for="image">Product Image: </label>
+                <input type="file" name="image" id="image" required>
+                <br>
+                <label for="price">Product Price: </label>
+                <input type="number" name="price" id="price" required>
+                <br>
+                <label for="content">Product Content: </label>
+                <textarea name="content" id="content" cols="45" rows="15" required></textarea>
+                <br>
+                <label for="category">Product Category</label>
+                <select name="category" id="category" required>
+                    <option value="" disabled selected>...Select Category...</option>
+                    <option value="agricultural product">Agricultural Product</option>
+                    <option value="livestock product">Livestock Product</option>
+                </select>
+                <br>
+                <input type="submit" value="Add Item">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <% if (products.length > 0) { %>
+        <% products.forEach(product => { %>
+         <div>
+            <img src="<%= product.image %>" alt="<%= product.name %>">
+            <h3><%= product.name %></h3>
+            <h5><%= product.price %> Naira</h5>
+            <p><%= product.snippet %>...</p>
+            <a href="/updateProduct/<%= product._id %>">Edit</a>
+            <a href="/deleteProduct/<%= product._id %>">Delete</a>
+         </div>
+        <% }) %>
+      <% } else { %>
+        <h3>There are no Products yet...<a href="#AddProduct">Add Product</a></h3>
+      <% } %>
+</body>
+</html>
