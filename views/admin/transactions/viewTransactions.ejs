@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+</head>
+<body>
+    <h1>View All Transactions</h1>
+    <table>
+        <tr>
+            <th>Food Name</th>
+            <th>Food price</th>
+            <th>Purchased By</th>
+            <th>Email</th>
+            <th>Date & TIme</th>
+        </tr>
+        <% if (transactions.length > 0) { %>
+         <% transactions.forEach(transaction => { %>
+            <tr>
+                <% const time = new Date(transaction.createdAt).toLocaleString() %> 
+                <td><%= transaction.productName %></td>
+                <td><%= transaction.amount %></td>
+                <td><%= transaction.fullName %></td>
+                <td><%= transaction.email %></td>
+                <td><%= time %></td>
+            </tr>
+         <% }) %>
+        <% } else { %>
+            <tr>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

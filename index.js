@@ -63,6 +63,8 @@ app.use('/addProduct', require('./router/admin/products/createProducts')) // Add
 app.use('/updateProduct', require('./router/admin/products/updateProducts')) // Edit Products
 app.use('/deleteProduct', require('./router/admin/products/deleteProducts')) // Delete Products
 app.use('/verify_transaction', require('./router/admin/transactions/verifyTransaction')) // Verify Transaction
+app.use('/transactions', require('./router/admin/transactions/viewTransactions')) // View All Transactions
+app.use('/products', require('./router/admin/products/viewProducts')) // View All Products
 
 // Client
 app.use('/', require('./router/client/index')) // Home Page
