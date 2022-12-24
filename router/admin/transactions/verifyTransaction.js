@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     path: `/transaction/verify/${reference}`,
     method: "GET",
     headers: {
-      Authorization: "Bearer sk_test_a57c0c5dc61de74ba280e8601ccd83084c63fe20",
+      Authorization: process.env.secret_key,
     },
   };
 
