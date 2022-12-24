@@ -27,6 +27,11 @@ const buy = new Schema({
         required: true,
         trim: true
     },
+    productID: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     confirmed: {
         type: Boolean,
         required: true,

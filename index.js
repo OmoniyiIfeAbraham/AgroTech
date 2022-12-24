@@ -69,3 +69,4 @@ app.use('/', require('./router/client/index')) // Home Page
 app.use('/agriculturalProducts', require('./router/client/products/agriculturalProducts')) // All Agricultural Products
 app.use('/livestockProducts', require('./router/client/products/livestockProducts')) // All Livestock Products
 app.use('/buy', require('./router/client/transactions/buy')) // Buy Form From PayStack
+app.use('/regbuy', require('./router/client/transactions/regbuy')) // Register To Process Buy

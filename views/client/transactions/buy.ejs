@@ -7,24 +7,23 @@
     <title>Payment Form</title>
 </head>
 <body>
-    <% const ref = Math.random().toString(36).substring(2,12); %> 
     <%= msg %>
     <form action="/buy" method="POST" id="paymentForm">
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email-address" name="email" required />
+          <input type="email" id="email-address" name="email" value="<%= person.email %>" readonly required />
         </div>
         <div class="form-group">
           <label for="amount">Amount</label>
-          <input type="number" id="amount" name="amount" required />
+          <input type="number" id="amount" name="amount" value="<%= person.amount %>" readonly required />
         </div>
         <div class="form-group">
           <label for="first-name">First Name</label>
-          <input type="text" id="first-name" name="firstName" />
+          <input type="text" id="first-name" name="firstName" value="<%= person.firstName %>" readonly />
         </div>
         <div class="form-group">
           <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" name="lastName" />
+          <input type="text" id="last-name" name="lastName" value="<%= person.lastName %>" readonly />
         </div>
         <div class="form-group">
           <label for="ref">Reference</label>

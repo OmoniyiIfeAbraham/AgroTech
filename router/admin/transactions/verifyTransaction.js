@@ -4,8 +4,24 @@ const router = express.Router();
 
 // const http = require("http");
 const https = require('https')
+const buysMod = require('./../../../models/transactions/buy')
+const productsMod = require('./../../../models/products/products')
+const mailer = require('nodemailer')
 
-router.get("/", (req, res) => {
+const systemMail = mailer.createTransport({
+  service: process.env.service,
+  host: process.env.host,
+  port: 465,
+  auth: {
+      user: process.env.email,
+      pass: process.env.pass
+  },
+  tls: {
+      rejectUnauthorized: false
+  }
+})
+
+router.get("/", async(req, res, next) => {
     const reference = req.query.reference
   var data = "";
 
@@ -24,14 +40,59 @@ router.get("/", (req, res) => {
       data += chunk;
     });
 
-    response.on("end", () => {
-      console.log(JSON.parse(data))
+    response.on("end", async() => {
+      const info = JSON.parse(data)
+      const reference = info.data.reference
+      const amount = info.data.amount
+      const buy = await buysMod.findOne({ ref: reference })
+      const product = await productsMod.findById(buy.productID)
+      const products = await productsMod.find({ category: product.category})
+      if(buy.amount == amount/100 && product.price == amount/100) {
+        buysMod.findOneAndUpdate({ ref: reference }, { confirmed: true }, (err, docs) => {
+          if(err) {
+            console.log(err)
+            next(err)
+          } else {
+            async function mail() {
+              const mailOption={
+                from: `${process.env.adminName} ${process.env.email}`,
+                to: buy.email,
+                subject: `${buy.firstName} ${buy.lastName} Transaction Details`,
+                html: `
+                    <body>
+                        <center><h3>Hello ${buy.firstName} ${buy.lastName} Your Payment Was Succesful and Your Good would be Delivered ASAP. </h3></center>
+                    </body>
+                `
+              }
+              await systemMail.sendMail(mailOption)
+            }
+            mail()
+            res.render('client/products/livestockproducts', { products, msg: '', resp: `Your Payment Was Succesful and a mail with Details has been sent to this Address: ${buy.email}.`})
+          }
+        })
+      } else {
+        async function mail() {
+          const mailOption={
+            from: `${process.env.adminName} ${process.env.email}`,
+            to: buy.email,
+            subject: `${buy.firstName} ${buy.lastName} Transaction Details`,
+            html: `
+                <body>
+                    <center><h3>Hello ${buy.firstName} ${buy.lastName} Your Payment Failed Because you Tampered with the Price of the Product. Sorry But There would be No Refund Of Fund and No Delivery of Good. </h3></center>
+                </body>
+            `
+          }
+          await systemMail.sendMail(mailOption)
+        }
+        mail()
+        res.render('client/products/livestockproducts', { products, msg: '', resp: `Your Payment Failed due to Incorrect Price. Details has been sent to this Address: ${buy.email}.` })
+      }
     });
   };
 
   let rep = https.request(options, callback);
   rep.end();
-  res.send("call completed successfully");
+  console.log("call completed successfully");
 });
 
 module.exports = router;
