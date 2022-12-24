@@ -62,8 +62,10 @@ app.use('/login', require('./router/admin/login')) // Admin Login
 app.use('/addProduct', require('./router/admin/products/createProducts')) // Add Products
 app.use('/updateProduct', require('./router/admin/products/updateProducts')) // Edit Products
 app.use('/deleteProduct', require('./router/admin/products/deleteProducts')) // Delete Products
+app.use('/verify_transaction', require('./router/admin/transactions/verifyTransaction')) // Verify Transaction
 
 // Client
 app.use('/', require('./router/client/index')) // Home Page
 app.use('/agriculturalProducts', require('./router/client/products/agriculturalProducts')) // All Agricultural Products
 app.use('/livestockProducts', require('./router/client/products/livestockProducts')) // All Livestock Products
+app.use('/buy', require('./router/client/transactions/buy')) // Buy Form From PayStack
