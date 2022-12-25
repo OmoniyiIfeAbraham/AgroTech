@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -118,4 +118,510 @@
         <h3>There are no Products yet...<a href="#AddProduct">Add Product</a></h3>
       <% } %>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="images/favicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>AgroTech</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+    .overlay {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 10;
+background: rgba(0, 0, 0, 0.7);
+transition: opacity 500ms;
+visibility: hidden;
+opacity: 0;
+}
+.overlay:target {
+visibility: visible;
+opacity: 1;
+}
+
+.popup {
+margin: 40px auto;
+background: #fff;
+border-radius: 5px;
+width: 30%;
+position: relative;
+transition: all 5s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+          .popup {
+            width: 95%
+          }
+        }
+
+.popup h2 {
+margin-top: 0;
+color: #333;
+font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+position: absolute;
+top: 20px;
+right: 30px;
+transition: all 200ms;
+font-size: 30px;
+font-weight: bold;
+text-decoration: none;
+color: #333;
+}
+.popup .close:hover {
+color: #06d85f;
+}
+.popup .content {
+max-height: 30%;
+overflow: auto;
+}
+
+#add{
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section ">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/admin">
+            <span>
+              AgroTech Admin Panel
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  pl-lg-5">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/products">Products <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/transactions">Transactions</a>
+                </li>
+              </ul>
+            </div>
+            <div class="quote_btn-container">
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- product section -->
+
+  <div id="AddProduct" class="overlay">
+    <div class="popup">
+      <a class="close" href="">&times;</a>
+      <div class="content">
+        <center>
+          <h1>Add Product</h1>
+          <p><%= msg %></p>
+        </center>
+          <form action="/addProduct" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" id="name" required placeholder="Product Name" style="width: 90%;">
+            <input type="file" name="image" id="image" required placeholder="Product Image">
+            <input type="number" name="price" id="price" required placeholder="Product Price" style="width: 90%;">
+            <textarea name="content" id="content" cols="45" rows="15" required>Product Content</textarea>
+            <select name="category" id="category" required>
+                <option value="" disabled selected>...Select Category...</option>
+                <option value="agricultural product">Agricultural Product</option>
+                <option value="livestock product">Livestock Product</option>
+            </select>
+            <br>
+            <br>
+            <center>
+              <input type="submit" value="Add Item">
+            </center>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <section class="product_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <p><%= msg %></p>
+        <a href="#AddProduct" id="add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Add Product
+        </a>
+        <br>
+        <br>
+        <h2>
+          Agricultural Products
+        </h2>
+        <p>
+          We Provide Good Quality Products at Affordable Prices.
+        </p>
+      </div>
+      <div class="row">
+        <% if (products.length > 0) { %>
+          <% products.forEach(product => { %>
+            <% if (product.category === 'agricultural product') { %>
+              <div class="col-md-6 col-lg-4 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="<%= product.image %>" alt="" style="width: 500px; height: 200px;">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      <%= product.name %>
+                    </h5>
+                    <div class="price_box">
+                      <h6 class="price_heading">
+                        <span>N.</span> <%= product.price %>.00
+                      </h6>
+                      <a href="/updateProduct/<%= product._id %>">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        Edit
+                      </a>
+                      <a href="/deleteProduct/<%= product._id %>">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% } else { %>
+
+            <% } %>
+          <% }) %>
+        <% } else { %>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Chamomile Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 100.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Herbal Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 200.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Linden Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 200.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Livestock Products
+        </h2>
+        <p>
+          We Provide Good Quality Products at Affordable Prices.
+        </p>
+      </div>
+      <div class="row">
+        <% if (products.length > 0) { %>
+          <% products.forEach(product => { %>
+            <% if (product.category === 'livestock product') { %>
+              <div class="col-md-6 col-lg-4 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="<%= product.image %>" alt="" style="width: 500px; height: 200px;">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      <%= product.name %>
+                    </h5>
+                    <div class="price_box">
+                      <h6 class="price_heading">
+                        <span>N.</span> <%= product.price %>.00
+                      </h6>
+                      <a href="/updateProduct/<%= product._id %>">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        Edit
+                      </a>
+                      <a href="/deleteProduct/<%= product._id %>">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% } else { %>
+
+            <% } %>
+          <% }) %>
+        <% } else { %>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Chamomile Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 100.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Herbal Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 200.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Linden Tea
+                </h5>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span>N.</span> 200.00
+                  </h6>
+                  <a href="">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                  </a>
+                  <a href="">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!-- end product section -->
+
+  <!-- info section -->
+  <section class="info_section">
+
+    <div class="container">
+      <div class="contact_nav">
+        <a href="">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <span>
+            Call : +234 9032825450
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span>
+            Email : agrotech@gmail.com
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span>
+            No. 13 Nnamdi Azikwe Crescent California
+          </span>
+        </a>
+      </div>
+      <div class="col-md-7 mx-auto px-0">
+        <div class="info_form_social_box">
+          <h4>
+            SIGN UP TO OUR NEWSLETTER
+          </h4>
+          <form action="">
+            <input type="text" placeholder="Enter Your Email" />
+            <button type="submit">
+              Subscribe
+            </button>
+          </form>
+          <div class="social_box">
+            <a href="">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Swift Technologies</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+</body>
+
 </html>
