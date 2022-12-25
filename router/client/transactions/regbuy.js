@@ -40,14 +40,14 @@ router.post('/livestock', async(req, res, next) => {
                 sess.ref = Ref
                 res.redirect('/buy')
             } else {
-                res.render('client/products/livestockproducts', { msg: 'A Transaction with this Reference Already Exists. Reload Page and Try Again Please!!!', products, resp: '' })
+                res.render('client/products/livestockProducts', { msg: 'A Transaction with this Reference Already Exists. Reload Page and Try Again Please!!!', products, resp: '' })
             }
         } else {
-            res.render('client/products/livestockproducts', { msg: 'All Fields are Required!!!', products, resp: '' })
+            res.render('client/products/livestockProducts', { msg: 'All Fields are Required!!!', products, resp: '' })
         }
     } catch(err) {
         console.log(err.message)
-        res.render('client/products/livestockproducts', { msg: 'An Error Occurred!!!', products, resp: '' })
+        res.render('client/products/livestockProducts', { msg: 'An Error Occurred!!!', products, resp: '' })
         next(err)
     }
 })
