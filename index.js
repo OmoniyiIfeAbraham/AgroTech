@@ -73,3 +73,5 @@ app.use('/livestockProducts', require('./router/client/products/livestockProduct
 app.use('/buy', require('./router/client/transactions/buy')) // Buy Form From PayStack
 app.use('/regbuy', require('./router/client/transactions/regbuy')) // Register To Process Buy
 app.use('/contact', require('./router/client/contact')) // Contact page
+app.use('/search', require('./router/client/search')) // Search
+app.use('/message', require('./router/client/message')) // Messages

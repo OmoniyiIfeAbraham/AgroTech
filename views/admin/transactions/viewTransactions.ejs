@@ -143,13 +143,6 @@ only screen and (max-width: 760px),
                 </li>
               </ul>
             </div>
-            <div class="quote_btn-container">
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-            </div>
           </div>
         </nav>
       </div>
@@ -157,6 +150,7 @@ only screen and (max-width: 760px),
     <!-- end header section -->
   </div>
 
+  <center><h3>Transactions</h3></center>
   <table>
     <tr>
         <th>Food Name</th>
@@ -173,6 +167,38 @@ only screen and (max-width: 760px),
             <td><%= transaction.amount %></td>
             <td><%= transaction.fullName %></td>
             <td><%= transaction.email %></td>
+            <td><%= time %></td>
+        </tr>
+     <% }) %>
+    <% } else { %>
+        <tr>
+            <td>-----</td>
+            <td>-----</td>
+            <td>-----</td>
+            <td>-----</td>
+            <td>-----</td>
+        </tr>
+    <% } %>
+</table>
+<br>
+<br>
+<center><h3>Messages</h3></center>
+  <table>
+    <tr>
+        <th>Food Name</th>
+        <th>Food price</th>
+        <th>Purchased By</th>
+        <th>Email</th>
+        <th>Date & TIme</th>
+    </tr>
+    <% if (messages.length > 0) { %>
+     <% messages.forEach(message => { %>
+        <tr>
+            <% const time = new Date(message.createdAt).toLocaleString() %> 
+            <td><%= message.name %></td>
+            <td><%= message.phone %></td>
+            <td><%= message.email %></td>
+            <td><%= message.message %></td>
             <td><%= time %></td>
         </tr>
      <% }) %>
@@ -203,13 +229,13 @@ only screen and (max-width: 760px),
         <a href="">
           <i class="fa fa-envelope" aria-hidden="true"></i>
           <span>
-            Email : agrotech@gmail.com
+            Email : ibrahimauwaly@gmail.com
           </span>
         </a>
         <a href="">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
           <span>
-            No. 13 Nnamdi Azikwe Crescent California
+            No. 51 sabo garba housing estate kabuga janbulo
           </span>
         </a>
       </div>

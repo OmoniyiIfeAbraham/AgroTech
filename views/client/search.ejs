@@ -1,0 +1,207 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (results.length > 0) { %>
+     <% results.forEach(result => { %>
+      <p><%= result.name %></p>
+     <% }) %>
+    <% } else { %>
+        <p>No Search</p>
+    <% } %>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="images/favicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>AgroTech</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+                .overlay {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 10;
+          background: rgba(0, 0, 0, 0.7);
+          transition: opacity 500ms;
+          visibility: hidden;
+          opacity: 0;
+        }
+        .overlay:target {
+          visibility: visible;
+          opacity: 1;
+        }
+  
+        .popup {
+          margin: 70px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 5px;
+          width: 30%;
+          position: relative;
+          transition: all 5s ease-in-out;
+        }
+
+        @media screen and (max-width: 600px) {
+          .popup {
+            width: 95%
+          }
+        }
+  
+        .popup h2 {
+          margin-top: 0;
+          color: #333;
+          font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          transition: all 200ms;
+          font-size: 30px;
+          font-weight: bold;
+          text-decoration: none;
+          color: #333;
+        }
+        .popup .close:hover {
+          color: #06d85f;
+        }
+        .popup .content {
+          max-height: 30%;
+          overflow: auto;
+        }
+    </style>
+  </style>
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- end header section -->
+  </div>
+
+  <!-- product section -->
+
+  <section class="product_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <button onclick="history.back()">Go Back</button>
+        <h2>
+          Search Results
+        </h2>
+        <p>
+          We Provide Good Quality Products at Affordable Prices.
+        </p>
+      </div>
+      <div class="row">
+        <% if (results.length > 0) { %>
+          <% results.forEach(result => { %>
+            <div class="col-md-6 col-lg-4 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="<%= result.image %>" alt="" style="width: 500px; height: 200px;">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <%= result.name %>
+                  </h5>
+                  <div class="price_box">
+                    <h6 class="price_heading">
+                      <span>N.</span> <%= result.price %>.00
+                    </h6>
+                    <a href="#regbuy?<%= result._id %>">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      Buy Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div id="regbuy?<%= result._id %>" class="overlay">
+              <div class="popup">
+                  <% const ref = Math.random().toString(36).substring(2,12); %> 
+                <center>
+                  <h5>Fill Your Info</h5>
+                  <h6>Purchase of <%= result.name %></h6>
+                </center>
+                <a class="close" href="">&times;</a>
+                <div class="content">
+                  <form action="/regbuy/agricultural" method="POST">
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email-address" name="email" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" value="<%= result.price %>" required readonly />
+                      </div>
+                      <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="firstName" />
+                      </div>
+                      <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="lastName" />
+                      </div>
+                      <div class="form-group" style="display: none;">
+                        <label for="last-name">Reference</label>
+                        <input type="text" id="last-name" name="ref" value="<%= ref %>" readonly />
+                      </div>
+                      <div class="form-group" style="display: none;">
+                        <input type="text" id="last-name" name="product_id" value="<%= result._id %>" readonly />
+                      </div>
+                      <div class="form-submit">
+                        <input type="submit" value="Pay">
+                      </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>No Results to match your Query</p>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

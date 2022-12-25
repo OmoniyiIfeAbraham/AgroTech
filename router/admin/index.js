@@ -13,4 +13,10 @@ router.get('/', async(req, res) => {
     }
 })
 
+router.get('/logout', async(req, res) => {
+    const sess = req.session
+    sess.destroy()
+    res.redirect('/')
+})
+
 module.exports = router

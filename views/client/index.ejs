@@ -140,7 +140,8 @@ overflow: auto;
               </ul>
             </div>
             <div class="quote_btn-container">
-              <form class="form-inline">
+              <form class="form-inline" method="post" action="/search">
+                <input type="text" name="search" id="" placeholder="search">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
@@ -605,21 +606,21 @@ overflow: auto;
                 Contact Us
               </h2>
             </div>
-            <form action="">
+            <form action="/message" method="post">
               <div>
-                <input type="text" placeholder="Your Name" />
+                <input type="text" placeholder="Your Name" name="name" required  />
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <input type="text" placeholder="Phone Number" name="phone" required />
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" placeholder="Email" name="email" required />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" class="message-box" placeholder="Message" name="message" required />
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit">
                   SEND
                 </button>
               </div>
@@ -652,13 +653,13 @@ overflow: auto;
         <a href="">
           <i class="fa fa-envelope" aria-hidden="true"></i>
           <span>
-            Email : agrotech@gmail.com
+            Email : ibrahimauwaly@gmail.com
           </span>
         </a>
         <a href="">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
           <span>
-            No. 13 Nnamdi Azikwe Crescent California
+            No. 51 sabo garba housing estate kabuga janbulo
           </span>
         </a>
       </div>
