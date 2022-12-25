@@ -68,7 +68,7 @@ router.get("/", async(req, res, next) => {
             }
             mail()
             if(product.category === 'livestock product') {
-              res.render('client/products/livestockproducts', { products, msg: '', resp: `Your Payment Was Succesful and a mail with Details has been sent to this Address: ${buy.email}.`})
+              res.render('client/products/livestockProducts', { products, msg: '', resp: `Your Payment Was Succesful and a mail with Details has been sent to this Address: ${buy.email}.`})
             } else {
               res.render('client/products/agriculturalProducts', { products, msg: '', resp: `Your Payment Was Succesful and a mail with Details has been sent to this Address: ${buy.email}.`})
             }
@@ -90,7 +90,7 @@ router.get("/", async(req, res, next) => {
         }
         mail()
         if(product.category === 'livestock product') {
-          res.render('client/products/livestockproducts', { products, msg: '', resp: `Your Payment Failed due to Incorrect Price. Details has been sent to this Address: ${buy.email}.` })
+          res.render('client/products/livestockProducts', { products, msg: '', resp: `Your Payment Failed due to Incorrect Price. Details has been sent to this Address: ${buy.email}.` })
         } else {
           res.render('client/products/agriculturalProducts', { products, msg: '', resp: `Your Payment Failed due to Incorrect Price. Details has been sent to this Address: ${buy.email}.` })
         }
