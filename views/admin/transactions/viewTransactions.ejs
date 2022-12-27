@@ -69,6 +69,8 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
   <style>
     body {
@@ -76,7 +78,7 @@
 }
 
 table { 
-	width: 750px; 
+	width: 95%; 
 	border-collapse: collapse; 
 	margin: auto;
     margin-top: 100px;
@@ -105,7 +107,7 @@ only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	table { 
-	  	width: 100%; 
+	  	width: 95%; 
 	}
 
 	tr { border: 1px solid #ccc; }
@@ -151,66 +153,92 @@ only screen and (max-width: 760px),
   </div>
 
   <center><h3>Transactions</h3></center>
-  <table>
-    <tr>
+  <table id="example" class="display" style="width: 100%;">
+    <thead>
+      <tr>
         <th>Food Name</th>
         <th>Food price</th>
         <th>Purchased By</th>
         <th>Email</th>
         <th>Date & TIme</th>
-    </tr>
-    <% if (transactions.length > 0) { %>
-     <% transactions.forEach(transaction => { %>
-        <tr>
-            <% const time = new Date(transaction.createdAt).toLocaleString() %> 
-            <td><%= transaction.productName %></td>
-            <td><%= transaction.amount %></td>
-            <td><%= transaction.fullName %></td>
-            <td><%= transaction.email %></td>
-            <td><%= time %></td>
-        </tr>
-     <% }) %>
-    <% } else { %>
-        <tr>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-        </tr>
-    <% } %>
-</table>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (transactions.length > 0) { %>
+        <% transactions.forEach(transaction => { %>
+           <tr>
+               <% const time = new Date(transaction.createdAt).toLocaleString() %> 
+               <td><%= transaction.productName %></td>
+               <td><%= transaction.amount %></td>
+               <td><%= transaction.fullName %></td>
+               <td><%= transaction.email %></td>
+               <td><%= time %></td>
+           </tr>
+        <% }) %>
+       <% } else { %>
+           <tr>
+               <td>-----</td>
+               <td>-----</td>
+               <td>-----</td>
+               <td>-----</td>
+               <td>-----</td>
+           </tr>
+       <% } %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Food Name</th>
+        <th>Food price</th>
+        <th>Purchased By</th>
+        <th>Email</th>
+        <th>Date & TIme</th>
+      </tr>
+    </tfoot>
+  </table>
 <br>
 <br>
 <center><h3>Messages</h3></center>
-  <table>
+<table id="example" class="display" style="width:100%">
+  <thead>
     <tr>
-        <th>Food Name</th>
-        <th>Food price</th>
-        <th>Purchased By</th>
-        <th>Email</th>
-        <th>Date & TIme</th>
+      <th>Food Name</th>
+      <th>Food price</th>
+      <th>Purchased By</th>
+      <th>Email</th>
+      <th>Date & TIme</th>
     </tr>
+  </thead>
+  <tbody>
     <% if (messages.length > 0) { %>
-     <% messages.forEach(message => { %>
-        <tr>
-            <% const time = new Date(message.createdAt).toLocaleString() %> 
-            <td><%= message.name %></td>
-            <td><%= message.phone %></td>
-            <td><%= message.email %></td>
-            <td><%= message.message %></td>
-            <td><%= time %></td>
-        </tr>
-     <% }) %>
-    <% } else { %>
-        <tr>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-            <td>-----</td>
-        </tr>
-    <% } %>
+      <% messages.forEach(message => { %>
+         <tr>
+             <% const time = new Date(message.createdAt).toLocaleString() %> 
+             <td><%= message.name %></td>
+             <td><%= message.phone %></td>
+             <td><%= message.email %></td>
+             <td><%= message.message %></td>
+             <td><%= time %></td>
+         </tr>
+      <% }) %>
+     <% } else { %>
+         <tr>
+             <td>-----</td>
+             <td>-----</td>
+             <td>-----</td>
+             <td>-----</td>
+             <td>-----</td>
+         </tr>
+     <% } %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Food Name</th>
+      <th>Food price</th>
+      <th>Purchased By</th>
+      <th>Email</th>
+      <th>Date & TIme</th>
+    </tr>
+  </tfoot>
 </table>
 
 <br>
@@ -292,6 +320,16 @@ only screen and (max-width: 760px),
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('table.display').DataTable({responsive: true})
+    })
+  </script>
 
 </body>
 
