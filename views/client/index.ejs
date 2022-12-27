@@ -1,20 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroTech</title>
-</head>
-<body>
-    <center><h1>AgroTech</h1></center>
-    <a href="/">Home</a>
-    <a href="/agriculturalProducts">Agricultural Products</a>
-    <a href="/livestockProducts">LiveStock Products</a>
-    <a href="#">Contact</a>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
 
@@ -48,61 +31,65 @@
 
   <style>
     .overlay {
-position: fixed;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-z-index: 10;
-background: rgba(0, 0, 0, 0.7);
-transition: opacity 500ms;
-visibility: hidden;
-opacity: 0;
-}
-.overlay:target {
-visibility: visible;
-opacity: 1;
-}
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
 
-.popup {
-margin: 70px auto;
-padding: 20px;
-background: #fff;
-border-radius: 5px;
-width: 30%;
-position: relative;
-transition: all 5s ease-in-out;
-}
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
 
-@media screen and (max-width: 600px) {
-          .popup {
-            width: 95%
-          }
-        }
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 30%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
 
-.popup h2 {
-margin-top: 0;
-color: #333;
-font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-position: absolute;
-top: 20px;
-right: 30px;
-transition: all 200ms;
-font-size: 30px;
-font-weight: bold;
-text-decoration: none;
-color: #333;
-}
-.popup .close:hover {
-color: #06d85f;
-}
-.popup .content {
-max-height: 30%;
-overflow: auto;
-}
-</style>
+    @media screen and (max-width: 600px) {
+      .popup {
+        width: 95%
+      }
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .popup .close:hover {
+      color: #06d85f;
+    }
+
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+    }
+  </style>
 
 </head>
 
@@ -118,7 +105,8 @@ overflow: auto;
               AgroTech
             </span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
           </button>
 
@@ -169,7 +157,8 @@ overflow: auto;
                       Farm Products
                     </h1>
                     <p>
-                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful sales site for your customers.
+                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful
+                      sales site for your customers.
                     </p>
                     <a href="/contact">
                       Contact Us
@@ -189,7 +178,8 @@ overflow: auto;
                       Farm Products
                     </h1>
                     <p>
-                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful sales site for your customers.
+                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful
+                      sales site for your customers.
                     </p>
                     <a href="/contact">
                       Contact Us
@@ -209,7 +199,8 @@ overflow: auto;
                       Farm Products
                     </h1>
                     <p>
-                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful sales site for your customers.
+                      AgroTech is designed for the task. Created by farmers, for consumers. AGT provides a beautiful
+                      sales site for your customers.
                     </p>
                     <a href="/contact">
                       Contact Us
@@ -251,13 +242,16 @@ overflow: auto;
               </h2>
             </div>
             <p>
-                AgroTech links supply and demand in the agri-food sector.
-                We work with all actors in the agricultural value chain and provide good value quality/price and high security for the buyer.
-                Farmers, buyers, sellers, transporters, partners, investors and all actors in the agricultural world interact easily and simply on the platform.
-                It'S EASY, FAST AND SECURE.
+              AgroTech links supply and demand in the agri-food sector.
+              We work with all actors in the agricultural value chain and provide good value quality/price and high
+              security for the buyer.
+              Farmers, buyers, sellers, transporters, partners, investors and all actors in the agricultural world
+              interact easily and simply on the platform.
+              It'S EASY, FAST AND SECURE.
             </p>
             <p>
-                AgroTech is a digital platform specialized in the promotion and marketing of agricultural products, connecting farms to markets and promoting local products internationally. 
+              AgroTech is a digital platform specialized in the promotion and marketing of agricultural products,
+              connecting farms to markets and promoting local products internationally.
 
             </p>
             <a href="/contact">
@@ -284,171 +278,177 @@ overflow: auto;
         </p>
       </div>
       <div class="row">
-        <% if (products.length > 0) { %>
-            <% products.forEach(product => { %>
-                <div class="col-md-6 col-lg-4 mx-auto">
-                    <div class="box">
-                      <div class="img-box">
-                        <img src="<%= product.image %>" alt="" style="width: 500px; height: 200px;">
-                      </div>
-                      <div class="detail-box">
-                        <h5>
-                          <%= product.name %>
-                        </h5>
-                        <div class="price_box">
-                          <h6 class="price_heading">
-                            <span>N.</span> <%= product.price %>.00
-                          </h6>
-                          <a href="#regbuy?<%= product._id %>">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            Buy Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                                  <!--  -->
-                <div id="regbuy?<%= product._id %>" class="overlay">
-                    <div class="popup">
-                        <% const ref = Math.random().toString(36).substring(2,12); %> 
-                        <center>
-                            <h5>Fill Your Info</h5>
-                            <h6>Purchase of <%= product.name %></h6>
-                        </center>
-                      <p><%= msg %></p>
-                      <a class="close" href="">&times;</a>
-                      <center>
-                        <div class="content">
-                          <% if (product.category === 'livestock product') { %>
-                            <form action="/regbuy/livestock" method="POST">
-                              <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email-address" name="email" required />
-                              </div>
-                              <div class="form-group">
-                                <label for="amount">Amount</label>
-                                <input type="number" id="amount" name="amount" value="<%= product.price %>" required readonly />
-                              </div>
-                              <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" name="firstName" />
-                              </div>
-                              <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" name="lastName" />
-                              </div>
-                              <div class="form-group" style="display: none;">
-                                <label for="last-name">Reference</label>
-                                <input type="text" id="last-name" name="ref" value="<%= ref %>" readonly />
-                              </div>
-                              <div class="form-group" style="display: none;">
-                                <input type="text" id="last-name" name="product_id" value="<%= product._id %>" readonly />
-                              </div>
-                              <div class="form-submit">
-                                <input type="submit" value="Proceed">
-                              </div>
-                            </form>
-                          <% } else { %>
-                            <form action="/regbuy/agricultural" method="POST">
-                              <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email-address" name="email" required />
-                              </div>
-                              <div class="form-group">
-                                <label for="amount">Amount</label>
-                                <input type="number" id="amount" name="amount" value="<%= product.price %>" required readonly />
-                              </div>
-                              <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" name="firstName" />
-                              </div>
-                              <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" name="lastName" />
-                              </div>
-                              <div class="form-group" style="display: none;">
-                                <label for="last-name">Reference</label>
-                                <input type="text" id="last-name" name="ref" value="<%= ref %>" readonly />
-                              </div>
-                              <div class="form-group" style="display: none;">
-                                <input type="text" id="last-name" name="product_id" value="<%= product._id %>" readonly />
-                              </div>
-                              <div class="form-submit">
-                                <input type="submit" value="Proceed">
-                              </div>
-                            </form>
-                          <% } %>
-                          </div>
-                      </center>
-                    </div>
-                  </div>
-            <% }) %>
-        <% } else { %>
+        <% if (products.length> 0) { %>
+          <% products.forEach(product=> { %>
             <div class="col-md-6 col-lg-4 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/p1.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Chamomile Tea
-                    </h5>
-                    <div class="price_box">
-                      <h6 class="price_heading">
-                        <span>N.</span> 100.00
-                      </h6>
-                      <a href="">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Buy Now
-                      </a>
-                    </div>
+              <div class="box">
+                <div class="img-box">
+                  <img src="<%= product.image %>" alt="" style="width: 500px; height: 200px;">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <%= product.name %>
+                  </h5>
+                  <div class="price_box">
+                    <h6 class="price_heading">
+                      <span>N.</span>
+                      <%= product.price %>.00
+                    </h6>
+                    <a href="#regbuy?<%= product._id %>">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      Buy Now
+                    </a>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/p2.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Herbal Tea
-                    </h5>
-                    <div class="price_box">
-                      <h6 class="price_heading">
-                        <span>N.</span> 200.00
-                      </h6>
-                      <a href="">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Buy Now
-                      </a>
+            </div>
+
+            <!--  -->
+            <div id="regbuy?<%= product._id %>" class="overlay">
+              <div class="popup">
+                <% const ref=Math.random().toString(36).substring(2,12); %>
+                  <center>
+                    <h5>Fill Your Info</h5>
+                    <h6>Purchase of <%= product.name %>
+                    </h6>
+                  </center>
+                  <p>
+                    <%= msg %>
+                  </p>
+                  <a class="close" href="">&times;</a>
+                  <center>
+                    <div class="content">
+                      <% if (product.category==='livestock product' ) { %>
+                        <form action="/regbuy/livestock" method="POST">
+                          <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email-address" name="email" required />
+                          </div>
+                          <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" name="amount" value="<%= product.price %>" required
+                              readonly />
+                          </div>
+                          <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="firstName" />
+                          </div>
+                          <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="lastName" />
+                          </div>
+                          <div class="form-group" style="display: none;">
+                            <label for="last-name">Reference</label>
+                            <input type="text" id="last-name" name="ref" value="<%= ref %>" readonly />
+                          </div>
+                          <div class="form-group" style="display: none;">
+                            <input type="text" id="last-name" name="product_id" value="<%= product._id %>" readonly />
+                          </div>
+                          <div class="form-submit">
+                            <input type="submit" value="Proceed">
+                          </div>
+                        </form>
+                        <% } else { %>
+                          <form action="/regbuy/agricultural" method="POST">
+                            <div class="form-group">
+                              <label for="email">Email Address</label>
+                              <input type="email" id="email-address" name="email" required />
+                            </div>
+                            <div class="form-group">
+                              <label for="amount">Amount</label>
+                              <input type="number" id="amount" name="amount" value="<%= product.price %>" required
+                                readonly />
+                            </div>
+                            <div class="form-group">
+                              <label for="first-name">First Name</label>
+                              <input type="text" id="first-name" name="firstName" />
+                            </div>
+                            <div class="form-group">
+                              <label for="last-name">Last Name</label>
+                              <input type="text" id="last-name" name="lastName" />
+                            </div>
+                            <div class="form-group" style="display: none;">
+                              <label for="last-name">Reference</label>
+                              <input type="text" id="last-name" name="ref" value="<%= ref %>" readonly />
+                            </div>
+                            <div class="form-group" style="display: none;">
+                              <input type="text" id="last-name" name="product_id" value="<%= product._id %>" readonly />
+                            </div>
+                            <div class="form-submit">
+                              <input type="submit" value="Proceed">
+                            </div>
+                          </form>
+                          <% } %>
+                    </div>
+                  </center>
+              </div>
+            </div>
+            <% }) %>
+              <% } else { %>
+                <div class="col-md-6 col-lg-4 mx-auto">
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="images/p1.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h5>
+                        Chamomile Tea
+                      </h5>
+                      <div class="price_box">
+                        <h6 class="price_heading">
+                          <span>N.</span> 100.00
+                        </h6>
+                        <a href="">
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Buy Now
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6 col-lg-4 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/p3.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h5>
-                      Linden Tea
-                    </h5>
-                    <div class="price_box">
-                      <h6 class="price_heading">
-                        <span>N.</span> 200.00
-                      </h6>
-                      <a href="">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Buy Now
-                      </a>
+                <div class="col-md-6 col-lg-4 mx-auto">
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="images/p2.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h5>
+                        Herbal Tea
+                      </h5>
+                      <div class="price_box">
+                        <h6 class="price_heading">
+                          <span>N.</span> 200.00
+                        </h6>
+                        <a href="">
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Buy Now
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-        <% } %>
+                <div class="col-md-6 col-lg-4 mx-auto">
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="images/p3.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h5>
+                        Linden Tea
+                      </h5>
+                      <div class="price_box">
+                        <h6 class="price_heading">
+                          <span>N.</span> 200.00
+                        </h6>
+                        <a href="">
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Buy Now
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
       </div>
     </div>
   </section>
@@ -503,10 +503,13 @@ overflow: auto;
                   <div class="client_detail">
                     <p>
                       <i class="fa fa-quote-left" aria-hidden="true"></i> &nbsp;
-                      AgroTech has made the difference for us. We’ve been amazed at how much time the online market has freed up, and how much more organized They are.
+                      AgroTech has made the difference for us. We’ve been amazed at how much time the online market has
+                      freed up, and how much more organized They are.
 
-                      A major benefit for us has been that we can easily Buy Products and get our delivery. With online orders before delivery there’s no more wasted time, products, and packaging for things that didn’t sell. The AGT website is simple to use for the producer as well as the customer.
-                       &nbsp;
+                      A major benefit for us has been that we can easily Buy Products and get our delivery. With online
+                      orders before delivery there’s no more wasted time, products, and packaging for things that didn’t
+                      sell. The AGT website is simple to use for the producer as well as the customer.
+                      &nbsp;
                       <i class="fa fa-quote-right" aria-hidden="true"></i>
                     </p>
                   </div>
@@ -534,8 +537,10 @@ overflow: auto;
                   <div class="client_detail">
                     <p>
                       <i class="fa fa-quote-left" aria-hidden="true"></i> &nbsp;
-                      I had previously bought items at an online store, but AgroTech is so much better because it is really geared towards customers. It makes purchase so easy, which saves me a lot of time when picking orders.
-                       &nbsp;
+                      I had previously bought items at an online store, but AgroTech is so much better because it is
+                      really geared towards customers. It makes purchase so easy, which saves me a lot of time when
+                      picking orders.
+                      &nbsp;
                       <i class="fa fa-quote-right" aria-hidden="true"></i>
                     </p>
                   </div>
@@ -608,7 +613,7 @@ overflow: auto;
             </div>
             <form action="/message" method="post">
               <div>
-                <input type="text" placeholder="Your Name" name="name" required  />
+                <input type="text" placeholder="Your Name" name="name" required />
               </div>
               <div>
                 <input type="text" placeholder="Phone Number" name="phone" required />
@@ -627,14 +632,8 @@ overflow: auto;
             </form>
           </div>
         </div>
-        <!-- <div class="col-md-6">
-          <div class="map_container">
-            <div class="map">
-              <div id="googleMap"></div>
-            </div>
-          </div>
-        </div> -->
       </div>
+
     </div>
   </section>
   <!-- end contact section -->
@@ -714,7 +713,8 @@ overflow: auto;
   <!-- custom js -->
   <script src="js/custom.js"></script>
   <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
 
 </body>

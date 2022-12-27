@@ -36,7 +36,7 @@ app.use(require("express-fileupload")({ useTempFiles: true }));
 
 // mongoose
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true)
+mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.mongo_link, {
     useUnifiedTopology: true,
@@ -57,21 +57,33 @@ app.use(express.static("public"));
 
 // ROUTES
 // Admin
-app.use('/admin', require('./router/admin/index')) //Admin Dashboard
-app.use('/login', require('./router/admin/login')) // Admin Login
-app.use('/addProduct', require('./router/admin/products/createProducts')) // Add Products
-app.use('/updateProduct', require('./router/admin/products/updateProducts')) // Edit Products
-app.use('/deleteProduct', require('./router/admin/products/deleteProducts')) // Delete Products
-app.use('/verify_transaction', require('./router/admin/transactions/verifyTransaction')) // Verify Transaction
-app.use('/transactions', require('./router/admin/transactions/viewTransactions')) // View All Transactions
-app.use('/products', require('./router/admin/products/viewProducts')) // View All Products
+app.use("/admin", require("./router/admin/index")); //Admin Dashboard
+app.use("/login", require("./router/admin/login")); // Admin Login
+app.use("/addProduct", require("./router/admin/products/createProducts")); // Add Products
+app.use("/updateProduct", require("./router/admin/products/updateProducts")); // Edit Products
+app.use("/deleteProduct", require("./router/admin/products/deleteProducts")); // Delete Products
+app.use(
+  "/verify_transaction",
+  require("./router/admin/transactions/verifyTransaction")
+); // Verify Transaction
+app.use(
+  "/transactions",
+  require("./router/admin/transactions/viewTransactions")
+); // View All Transactions
+app.use("/products", require("./router/admin/products/viewProducts")); // View All Products
 
 // Client
-app.use('/', require('./router/client/index')) // Home Page
-app.use('/agriculturalProducts', require('./router/client/products/agriculturalProducts')) // All Agricultural Products
-app.use('/livestockProducts', require('./router/client/products/livestockProducts')) // All Livestock Products
-app.use('/buy', require('./router/client/transactions/buy')) // Buy Form From PayStack
-app.use('/regbuy', require('./router/client/transactions/regbuy')) // Register To Process Buy
-app.use('/contact', require('./router/client/contact')) // Contact page
-app.use('/search', require('./router/client/search')) // Search
-app.use('/message', require('./router/client/message')) // Messages
+app.use("/", require("./router/client/index")); // Home Page
+app.use(
+  "/agriculturalProducts",
+  require("./router/client/products/agriculturalProducts")
+); // All Agricultural Products
+app.use(
+  "/livestockProducts",
+  require("./router/client/products/livestockProducts")
+); // All Livestock Products
+app.use("/buy", require("./router/client/transactions/buy")); // Buy Form From PayStack
+app.use("/regbuy", require("./router/client/transactions/regbuy")); // Register To Process Buy
+app.use("/contact", require("./router/client/contact")); // Contact page
+app.use("/search", require("./router/client/search")); // Search
+app.use("/message", require("./router/client/message")); // Messages

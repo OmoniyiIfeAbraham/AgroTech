@@ -1,45 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transactions</title>
-</head>
-<body>
-    <h1>View All Transactions</h1>
-    <table>
-        <tr>
-            <th>Food Name</th>
-            <th>Food price</th>
-            <th>Purchased By</th>
-            <th>Email</th>
-            <th>Date & TIme</th>
-        </tr>
-        <% if (transactions.length > 0) { %>
-         <% transactions.forEach(transaction => { %>
-            <tr>
-                <% const time = new Date(transaction.createdAt).toLocaleString() %> 
-                <td><%= transaction.productName %></td>
-                <td><%= transaction.amount %></td>
-                <td><%= transaction.fullName %></td>
-                <td><%= transaction.email %></td>
-                <td><%= time %></td>
-            </tr>
-         <% }) %>
-        <% } else { %>
-            <tr>
-                <td>-----</td>
-                <td>-----</td>
-                <td>-----</td>
-                <td>-----</td>
-                <td>-----</td>
-            </tr>
-        <% } %>
-    </table>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
 
@@ -74,46 +32,48 @@
 
   <style>
     body {
-    background-color: rgba(169, 169, 169, 0.5);
-}
+      background-color: rgba(169, 169, 169, 0.5);
+    }
 
-table { 
-	width: 95%; 
-	border-collapse: collapse; 
-	margin: auto;
-    margin-top: 100px;
-	}
+    table {
+      width: 95%;
+      border-collapse: collapse;
+      margin: auto;
+      margin-top: 100px;
+    }
 
-/* Zebra striping */
-tr:nth-of-type(odd) { 
-	background: rgb(169, 169, 169); 
-	}
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+      background: rgb(169, 169, 169);
+    }
 
-th { 
-	background: #3498db; 
-	color: white; 
-	font-weight: bold; 
-	}
+    th {
+      background: #3498db;
+      color: white;
+      font-weight: bold;
+    }
 
-td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
-	font-size: 18px;
-	}
-    
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+    td,
+    th {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      font-size: 18px;
+    }
 
-	table { 
-	  	width: 95%; 
-	}
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
 
-	tr { border: 1px solid #ccc; }
+      table {
+        width: 95%;
+      }
+
+      tr {
+        border: 1px solid #ccc;
+      }
 
 
-}
+    }
   </style>
 
 </head>
@@ -130,7 +90,8 @@ only screen and (max-width: 760px),
               AgroTech Admin Panel
             </span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
           </button>
 
@@ -152,7 +113,9 @@ only screen and (max-width: 760px),
     <!-- end header section -->
   </div>
 
-  <center><h3>Transactions</h3></center>
+  <center>
+    <h3>Transactions</h3>
+  </center>
   <table id="example" class="display" style="width: 100%;">
     <thead>
       <tr>
@@ -164,26 +127,36 @@ only screen and (max-width: 760px),
       </tr>
     </thead>
     <tbody>
-      <% if (transactions.length > 0) { %>
-        <% transactions.forEach(transaction => { %>
-           <tr>
-               <% const time = new Date(transaction.createdAt).toLocaleString() %> 
-               <td><%= transaction.productName %></td>
-               <td><%= transaction.amount %></td>
-               <td><%= transaction.fullName %></td>
-               <td><%= transaction.email %></td>
-               <td><%= time %></td>
-           </tr>
-        <% }) %>
-       <% } else { %>
-           <tr>
-               <td>-----</td>
-               <td>-----</td>
-               <td>-----</td>
-               <td>-----</td>
-               <td>-----</td>
-           </tr>
-       <% } %>
+      <% if (transactions.length> 0) { %>
+        <% transactions.forEach(transaction=> { %>
+          <tr>
+            <% const time=new Date(transaction.createdAt).toLocaleString() %>
+              <td>
+                <%= transaction.productName %>
+              </td>
+              <td>
+                <%= transaction.amount %>
+              </td>
+              <td>
+                <%= transaction.fullName %>
+              </td>
+              <td>
+                <%= transaction.email %>
+              </td>
+              <td>
+                <%= time %>
+              </td>
+          </tr>
+          <% }) %>
+            <% } else { %>
+              <tr>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+              </tr>
+              <% } %>
     </tbody>
     <tfoot>
       <tr>
@@ -195,53 +168,65 @@ only screen and (max-width: 760px),
       </tr>
     </tfoot>
   </table>
-<br>
-<br>
-<center><h3>Messages</h3></center>
-<table id="example" class="display" style="width:100%">
-  <thead>
-    <tr>
-      <th>Food Name</th>
-      <th>Food price</th>
-      <th>Purchased By</th>
-      <th>Email</th>
-      <th>Date & TIme</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if (messages.length > 0) { %>
-      <% messages.forEach(message => { %>
-         <tr>
-             <% const time = new Date(message.createdAt).toLocaleString() %> 
-             <td><%= message.name %></td>
-             <td><%= message.phone %></td>
-             <td><%= message.email %></td>
-             <td><%= message.message %></td>
-             <td><%= time %></td>
-         </tr>
-      <% }) %>
-     <% } else { %>
-         <tr>
-             <td>-----</td>
-             <td>-----</td>
-             <td>-----</td>
-             <td>-----</td>
-             <td>-----</td>
-         </tr>
-     <% } %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th>Food Name</th>
-      <th>Food price</th>
-      <th>Purchased By</th>
-      <th>Email</th>
-      <th>Date & TIme</th>
-    </tr>
-  </tfoot>
-</table>
+  <br>
+  <br>
+  <center>
+    <h3>Messages</h3>
+  </center>
+  <table id="example" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Food Name</th>
+        <th>Food price</th>
+        <th>Purchased By</th>
+        <th>Email</th>
+        <th>Date & TIme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (messages.length> 0) { %>
+        <% messages.forEach(message=> { %>
+          <tr>
+            <% const time=new Date(message.createdAt).toLocaleString() %>
+              <td>
+                <%= message.name %>
+              </td>
+              <td>
+                <%= message.phone %>
+              </td>
+              <td>
+                <%= message.email %>
+              </td>
+              <td>
+                <%= message.message %>
+              </td>
+              <td>
+                <%= time %>
+              </td>
+          </tr>
+          <% }) %>
+            <% } else { %>
+              <tr>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+                <td>-----</td>
+              </tr>
+              <% } %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Food Name</th>
+        <th>Food price</th>
+        <th>Purchased By</th>
+        <th>Email</th>
+        <th>Date & TIme</th>
+      </tr>
+    </tfoot>
+  </table>
 
-<br>
+  <br>
 
   <!-- info section -->
   <section class="info_section">
@@ -318,7 +303,8 @@ only screen and (max-width: 760px),
   <!-- custom js -->
   <script src="js/custom.js"></script>
   <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -326,8 +312,8 @@ only screen and (max-width: 760px),
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
   <script>
-    $(document).ready(function() {
-      $('table.display').DataTable({responsive: true})
+    $(document).ready(function () {
+      $('table.display').DataTable({ responsive: true })
     })
   </script>
 
