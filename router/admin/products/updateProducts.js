@@ -27,7 +27,7 @@ router.post("/:id", async (req, res, next) => {
       const productCategory = req.body.category;
       if (
         productName != null &&
-        productPrice != null &&
+        productPrice != null && 
         productContent != null &&
         productCategory != null
       ) {
